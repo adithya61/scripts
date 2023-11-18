@@ -8,6 +8,7 @@
   <body class="mx-3">
     <h1 class="heading">CheatSheet</h1>
     <h2>Withdraw Script</h2>
+    <div class="response" id="responsewithdraw"></div>
     <h3>
       <button class="btn" onclick="copy('withdraw')">Copy</button>
     </h3>
@@ -26,6 +27,7 @@
     </details>
     <hr class="solid" />
     <h2>Send Request</h2>
+    <div class="response" id="responserequest"></div>
     <h3>
       <button class="btn" onclick="copy('request')">Copy</button>
     </h3>
@@ -137,15 +139,17 @@
         return 0; } } } Linkedin.init({}, Linkedin.config);</code
       >
     </details>
-    <hr class="solid" />
+    <hr />
     <script>
       const copy = async (id) => {
         var copyText = document.getElementById(id).innerHTML;
 
-        // Copy the text inside the text field
-        await navigator.clipboard
-          .writeText(copyText)
-          .then(() => alert("copied"));
+        await navigator.clipboard.writeText(copyText).then(() => {
+          const res = document.getElementById("response" + id);
+          res.innerHTML = "Copied";
+          res.style.display = "block";
+          setTimeout(() => (res.style.display = "none"), 1000);
+        });
       };
     </script>
   </body>
