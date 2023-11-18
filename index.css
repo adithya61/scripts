@@ -11,5 +11,15 @@
 }
 
 .btn:hover {
-    background-color: rgba(210, 105, 30, 0.8);
+  background-color: rgba(210, 105, 30, 0.8);
+}
+
+.heading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+    font-family:monospace;
 }
