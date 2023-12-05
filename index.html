@@ -216,26 +216,6 @@
           setTimeout(() => (res.style.display = "none"), 1000);
         });
       };
-      const hit = document.getElementById("hit");
-      const lat = document.getElementById("lat");
-      const lon = document.getElementById("lon");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    hit.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-    lat.innerHTML = "Latitude: " + position.coords.latitude;
-    lon.innerHTML =  "Longitude: " + position.coords.longitude;
-}
-
-getLocation();
-
-setInterval(getLocation, 1000)
 
 
     </script>
