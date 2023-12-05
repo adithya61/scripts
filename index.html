@@ -195,6 +195,12 @@
         </ul>
     </article>
 
+    <ul>
+        <h2>Location</h2>
+        <li id="lat" >Lat</li>
+        <li id="lon" >Lon</li>
+    </ul>
+
 
     <script>
       const copy = async (id) => {
@@ -209,6 +215,26 @@
           setTimeout(() => (res.style.display = "none"), 1000);
         });
       };
+
+      const lat = document.getElementById("lat");
+      const lon = document.getElementById("lon");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  lat.innerHTML = "Latitude: " + position.coords.latitude;
+  lon.innerHTML =  "Longitude: " + position.coords.longitude;
+}
+
+setInterval(getLocation, 3000)
+
+
     </script>
   </body>
 </html>
