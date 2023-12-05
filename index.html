@@ -215,7 +215,7 @@
           setTimeout(() => (res.style.display = "none"), 1000);
         });
       };
-
+      const hit = document.getElementById("hit");
       const lat = document.getElementById("lat");
       const lon = document.getElementById("lon");
 
@@ -228,8 +228,10 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  lat.innerHTML = "Latitude: " + position.coords.latitude;
-  lon.innerHTML =  "Longitude: " + position.coords.longitude;
+    hit.innerHTML = "hitting..........."
+    lat.innerHTML = "Latitude: " + position.coords.latitude;
+    lon.innerHTML =  "Longitude: " + position.coords.longitude;
+    hit.innerHTML = "done"
 }
 
 setInterval(getLocation, 3000)
