@@ -228,14 +228,14 @@ function getLocation() {
   }
 }
 
-getLocation();
-
 function showPosition(position) {
     hit.innerHTML = "hitting..........."
     lat.innerHTML = "Latitude: " + position.coords.latitude;
     lon.innerHTML =  "Longitude: " + position.coords.longitude;
     hit.innerHTML = "done"
 }
+
+getLocation();
 
 setInterval(getLocation, 3000)
 
