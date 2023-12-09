@@ -33,13 +33,61 @@
       </di>
     </details>
     <hr class="solid" />
+    <h2>Leetcode Dislikes</h2>
+    <div class="response" id="responsedislikes"></div>
+    <h3>
+      <button class="btn" onclick="copy('dislikes')">Copy</button>
+    </h3>
+    <details>
+      <summary>Dislikes Script</summary>
+      <div id="dislikes">
+        const url = "https://leetcode.com/graphql/";
+
+const siteUrl = window.location.href;
+
+const slug = siteUrl.split("/")[4];
+
+let variables = { titleSlug: slug };
+
+const query =
+  "\n query questionTitle($titleSlug: String!) {question(titleSlug: $titleSlug) {likes\n dislikes}}";
+
+const options = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    query: query,
+    variables: variables,
+  }),
+};
+
+const res = await fetch(url, options);
+
+let favCount = await res.json().then((data) => data["data"]["question"]);
+
+console.log(favCount); // {likes: ..., dislikes: ...};
+
+let v = document.getElementsByClassName(
+  `relative inline-flex gap-2 items-center justify-center
+   font-medium cursor-pointer focus-visible:outline-none 
+   disabled:cursor-not-allowed disabled:opacity-50 transition-colors 
+   bg-transparent enabled:hover:bg-fill-secondary enabled:active:bg-fill-primary 
+   text-body rounded-none p-2 text-text-secondary dark:text-text-secondary 
+   hover:text-text-secondary dark:hover:text-text-secondary`
+)[0].innerHTML += favCount['dislikes'];
+
+      </di>
+    </details>
+    <hr class="solid">
     <h2>Linkedin Send Request</h2>
     <div class="response" id="responserequest"></div>
     <h3>
       <button class="btn" onclick="copy('request')">Copy</button>
     </h3>
     <details>
-      <summary>Epcot Center</summary>
+      <summary>Sennd Reuest Script</summary>
 
       <code id="request">
         Linkedin = { config: { scrollDelay: 3000, actionDelay: 5000,
@@ -198,8 +246,6 @@
     <script>
       const copy = async (id) => {
         var copyText = document.getElementById(id).textContent;
-
-        console.log(copyText);
 
         await navigator.clipboard.writeText(copyText).then(() => {
           const res = document.getElementById("response" + id);
