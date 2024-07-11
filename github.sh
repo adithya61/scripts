@@ -5,5 +5,5 @@ read commitMessage
 
 git commit -m "$commitMessage"
 
-git push origin main
+git push -u origin main
 
